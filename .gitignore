@@ -1,5 +1,6 @@
 *.bak
 testdata/
 testdata/
+phpadmin/contrib/
 .DS_Store
 nbproject

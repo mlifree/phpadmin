@@ -49,10 +49,6 @@ class Apps extends ModelAdmin {
 //    );
     public $inlines = array('tags', 'permissions');
 
-//    public function __construct() {
-//        parent::__construct();
-//        $this->form = new AppsForm();
-//    }
     // const MODEL = "apps";
 //    const LIST_PER_PAGE = 10;
     const VERBOSE_NAME = "应用";

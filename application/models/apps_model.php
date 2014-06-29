@@ -97,10 +97,11 @@ class Apps_model extends CI_Model {
 
     /**
      * 如果需要验证某个字段，则以 _valid_字段名 的方式命名方法，并做验证
+     * @param mixed $field 字段 Field 对象
      * @param mixed $value POST获取的值
-     * @return bool 如果字段安全则返回 TRUE，否则 FALSE
+     * @return mixed 然会字段过滤后的值
      */
-    public function _valid_package_size($value) {
+    public function _filter_package_size($field,$value) {
         
     }
 

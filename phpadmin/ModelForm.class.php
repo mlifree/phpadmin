@@ -189,6 +189,22 @@ class ModelForm {
         return $form_html;
     }
 
+    /**
+     * 根据 args 配置组合一些标签属性，如 width="" height=""
+     * @param type $field
+     * @return string attr html
+     */
+    private function _attrs_html($field) {
+        $attrs = ' ';
+        if ($field->args['width']) {
+            $attrs.='width="' . $field->args['width'] . '" ';
+        }
+        if ($field->args['height']) {
+            $attrs.='height="' . $field->args['height'] . '" ';
+        }
+        return $attrs;
+    }
+
     public function create_text_field($name, $field) {
         $form_html = '<div class="form-group col-xs-7" id="form-group-' . $name . '">';
         $form_html.=$this->label_html . '<div class="col-sm-8">';
@@ -209,6 +225,10 @@ class ModelForm {
 
     public function create_file_field($name, $field) {
         $form_html = '';
+        $default_html = '';
+        if (!empty($field->args['default'])) {
+            $default_html = '<img src="' . $field->args['default'] . '"'.$this->_attrs_html($field).'/>';
+        }
         if ($field->args['style'] == 'default') {
             $form_html.='<div class="form-group col-xs-7" id="form-group-' . $name . '">';
             $form_html.=$this->label_html . '<div class="col-sm-5">';
@@ -238,7 +258,7 @@ class ModelForm {
 
             $form_html.='<div class="form-group col-xs-7" id="form-group-' . $name . '">';
             $form_html.=$this->label_html . '<div class="col-sm-5">';
-            $form_html.='<input type="file" ' . $this->id_name_html . ' />';
+            $form_html.='<input type="file" ' . $this->id_name_html . ' />' . $default_html;
             $this->extra_script .= '$("#' . $this->field_id . '").uploadify({
         "swf"      : "' . base_url() . 'static/plugins/uploadify/uploadify.swf",
         "uploader" : "uploadify.php"
@@ -349,7 +369,6 @@ class ModelForm {
             $this->_closed_panel = TRUE;
         }
         //开始新的多对表字段的面板
-        $form_html.='<!--new field-->';
         $form_html.='<div class="panel panel-primary"><div class="panel-heading">' . $name . '</div>';
 //        $form_html.='<div class="form-group col-xs-7" id="form-group-' . $name . '">';
 //        $form_html.=$this->label_html . '<div class="col-sm-5">';
