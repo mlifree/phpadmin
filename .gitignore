@@ -1,0 +1,5 @@
+*.bak
+testdata/
+testdata/
+.DS_Store
+nbproject
