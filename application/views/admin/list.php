@@ -149,6 +149,7 @@
                         <div class="btn-group action-btn-group">
                             <a href="#" action="delete_selected" title="删除此行" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-trash"></span></a>
                             <a target="_blank" action="edit" href="<?php echo current_url() . "/edit/" . $item[$primary_field]; ?>" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-edit"></span></a>
+                            <?php if($actions):?>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">&nbsp;&nbsp;<span class="caret"></span>
                                 </button>
@@ -158,6 +159,7 @@
                                     <?php endforeach ?>
                                 </ul>
                             </div>
+                            <?php endif;?>
                         </div>
 
                     </td>

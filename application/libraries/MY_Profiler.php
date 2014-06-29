@@ -569,6 +569,11 @@ class MY_Profiler {
                     codeigniter_profiler.style.top = window.scrollY+"px";
                 return false;
             };
+            window.onkeyup=function(e){
+                if(e.keyCode==27){
+                    codeigniter_profiler.style.display="none";
+                }
+            }
             </script>';
 		return $output;
 	}

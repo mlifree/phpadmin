@@ -39,7 +39,9 @@ class Field {
         "db_index" => FALSE,
         "error_messages" => "",
         "max_length" => 0,
-        "search_field" => FALSE, //是否为搜索字段，改设置并不会为字段创建索引，而仅仅用于手台添加界面获取关联模型数据时，如果数据太多默认则使用搜索，而不将数据全部列出来
+        "search_field" => FALSE, //是否为搜索字段，改设置并不会为字段创建索引，而仅仅用于手台添加界面获取关联模型数据时，如果数据太多默认则使用搜索，而不将数据全部列出来,
+        "width" => 0,
+        "height" => 0,
     );
 
     function __construct($args = array()) {

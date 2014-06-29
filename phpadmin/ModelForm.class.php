@@ -192,7 +192,17 @@ class ModelForm {
     public function create_text_field($name, $field) {
         $form_html = '<div class="form-group col-xs-7" id="form-group-' . $name . '">';
         $form_html.=$this->label_html . '<div class="col-sm-8">';
-        $form_html.='<textarea class="form-control" ' . $this->id_name_html . ' rows="3">' . $field->args['default'] . '</textarea>';
+        if ($field->args['default']) {
+            $field->args['default'] = str_replace("<br />", "\n", $field->args['default']);
+        }
+        $attrs = ' ';
+        if ($field->args['width']) {
+            $attrs.='width="' . $field->args['width'] . '" ';
+        }
+        if ($field->args['height']) {
+            $attrs.='height="' . $field->args['height'] . '" ';
+        }
+        $form_html.='<textarea class="form-control" ' . $attrs . $this->id_name_html . ' rows="8">' . $field->args['default'] . '</textarea>';
         $form_html.='</div></div>';
         return $form_html;
     }
